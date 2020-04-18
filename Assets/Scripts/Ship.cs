@@ -6,10 +6,12 @@ public class Ship : MonoBehaviour
 {
     public float moveSpeed = 20f;
     private Rigidbody2D _rigidBody;
+    public ShipSection[,] _shipSections; // Initialize a 2D array to keep track of ship sections. initialize center component.
 
     private void Awake()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
+        _shipSections[0, 0] = new ShipSection(0, 0); // create an initial ships section
     }
     // Start is called before the first frame update
     void Start()

@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class Pilot : MonoBehaviour 
 {
-    public float moveSpeed = 200f;
+    public float moveSpeed = 20f;
     public Rigidbody2D _shipRigidBody;
     private Rigidbody2D _rigidBody;
 
     private void Awake()
     {
+        
         _rigidBody = GetComponent<Rigidbody2D>();
+        _shipRigidBody = GameObject.FindWithTag("Ship").GetComponent<Rigidbody2D>();
     }
     // Start is called before the first frame update
     void Start()
     {
-       
+
     }
 
     // Update is called once per frame

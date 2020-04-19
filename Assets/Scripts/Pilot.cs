@@ -12,7 +12,7 @@ public class Pilot : MonoBehaviour
     {
         
         _rigidBody = GetComponent<Rigidbody2D>();
-        _shipRigidBody = GameObject.FindWithTag("Ship").GetComponent<Rigidbody2D>();
+        _shipRigidBody = GameObject.FindWithTag("Ship").GetComponent<Rigidbody2D>(); // this was necessary because GetComponentInParent was not working
     }
     // Start is called before the first frame update
     void Start()
@@ -32,7 +32,7 @@ public class Pilot : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal_Pilot");
         float verticalInput = Input.GetAxis("Vertical_Pilot");
         Vector2 force = new Vector2(horizontalInput, verticalInput) * moveSpeed * Time.deltaTime;
-        _rigidBody.velocity = force + _shipRigidBody.velocity;
+        _rigidBody.velocity = force + _shipRigidBody.velocity; // drag pilot around with ship
 
         //transform.Translate(new Vector3(horizontalInput, verticalInput, 0) * moveSpeed * Time.deltaTime);
     }

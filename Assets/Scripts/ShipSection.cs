@@ -3,14 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Direction { up, left, right, down };
+
 public class ShipSection : MonoBehaviour
 {
-    private List<Wall> _wallList; // This will contain all of the walls for this ship section ( 4 max ).
+    public List<GameObject> _wallList; // This will contain all of the walls for this ship section ( 4 max ).
     private GameObject _attachedTo = null; // This is the ship section that this initially attaches to.
     private GameObject _leftNeighbor = null;
     private GameObject _rightNeighbor = null;
     private GameObject _upNeighbor = null;
     private GameObject _downNeighbor = null;
+    public GameObject wallPrefab; // the prefab to use for the walls of this module.
     public int _xposition; // This will contain this section's x position on the ship's array.
     public int _yposition; // This will contain the section's y position on the ship's array.
     public float health = 100;
@@ -25,7 +28,6 @@ public class ShipSection : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CreateSection(); // This will create the object/sprite in game.
         GetNeighbors(); // This will update the neighbors stored in this section.
         InitializeWalls(); // This will create the wall objects around the ship section, but not draw them.
         UpdateWalls(); // This will draw the walls appropriately, given the neighbor information.
@@ -47,13 +49,6 @@ public class ShipSection : MonoBehaviour
         UpdateWalls(); // This will draw the walls appropriately, given the neighbor information.
     }
 
-
-
-    // This will handle creating the initial game object, its prefab, and lining it up appropriately with the section to attach to.
-    private void CreateSection()
-    {
-        // NOTHING
-    }
 
     // This value will update the 4 neighbor values in the class.
     // This is a little copy-pastey and can probably be improved later.
@@ -86,11 +81,51 @@ public class ShipSection : MonoBehaviour
         else _downNeighbor = null; // don't leave old values in here if the neighbors don't exist anymore!
     }
 
+    //https://answers.unity.com/questions/995267/how-get-coords-of-objects-bounds.html
+    private List<Vector3> centersOfEdges(GameObject go)
+    {
+        float width = go.GetComponent<Renderer>().bounds.size.x;
+        float height = go.GetComponent<Renderer>().bounds.size.y;
+
+        Vector3 top = go.transform.position, bottom = go.transform.position, right = go.transform.position, left = go.transform.position;
+
+        top.y += height / 2;
+
+        bottom.y -= height / 2;
+
+        left.x -= width / 2;
+
+        right.x += width / 2;
+
+        List<Vector3> ed_temp = new List<Vector3>();
+        ed_temp.Add(top);
+        ed_temp.Add(left);
+        ed_temp.Add(right);
+        ed_temp.Add(bottom);
+
+        return ed_temp;
+    }
 
     // This will create the wall objects around the ship section, but not draw them.
     private void InitializeWalls()
     {
-        throw new NotImplementedException();
+        List<Vector3> edges = centersOfEdges(this.gameObject);
+        if (!(_upNeighbor is GameObject)) // if there's no neighbor to the left of this module
+        {
+            _wallList[(int)Direction.up].SetActive(true);
+        }
+        if (!(_leftNeighbor is GameObject)) // if there's no neighbor to the left of this module
+        {
+            _wallList[(int)Direction.left].SetActive(true);
+        }
+        if (!(_rightNeighbor is GameObject)) // if there's no neighbor to the left of this module
+        {
+            _wallList[(int)Direction.right].SetActive(true);
+        }
+        if (!(_downNeighbor is GameObject)) // if there's no neighbor to the left of this module
+        {
+            _wallList[(int)Direction.down].SetActive(true);
+        }
     }
 
     // This function will draw all the walls, ensuring that walls only appear on the outside edges of the ship (so where there is not a neighbor)

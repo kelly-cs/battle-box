@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 3718775299310429976, guid: 50ae422b0031cf142910e780d8628bcd,
         type: 3}
       propertyPath: m_Name
-      value: Ship Section
+      value: ShipSectionStandard
       objectReference: {fileID: 0}
     - target: {fileID: 3718775299310429977, guid: 50ae422b0031cf142910e780d8628bcd,
         type: 3}

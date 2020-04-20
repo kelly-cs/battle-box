@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Pilot : MonoBehaviour 
 {
     public float moveSpeed = 20f;
     public Rigidbody2D _shipRigidBody;
+    private TextMeshProUGUI tooltiptext;
     private Rigidbody2D _rigidBody;
 
     private void Awake()
@@ -17,7 +19,7 @@ public class Pilot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        tooltiptext = GetComponentInParent<TextMeshProUGUI>(); // attach the text component in the ship to the pilot, for game over usage
     }
 
     // Update is called once per frame
@@ -36,4 +38,19 @@ public class Pilot : MonoBehaviour
 
         //transform.Translate(new Vector3(horizontalInput, verticalInput, 0) * moveSpeed * Time.deltaTime);
     }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.transform.tag != "Ship" || collision.transform.tag != "ShipHitBox")
+        {
+
+        }
+    }
+
+
 }

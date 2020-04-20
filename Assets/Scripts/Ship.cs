@@ -15,6 +15,7 @@ public class Ship : MonoBehaviour
     public TextMeshProUGUI text;
     public float toolTipTimerMax = 5f;
     public float timer = 0f;
+    public float turnspeed = 50f;
 
     private void Awake()
     {
@@ -45,8 +46,11 @@ public class Ship : MonoBehaviour
     {
         float horizontalInput = Input.GetAxis("Horizontal_Ship");
         float verticalInput = Input.GetAxis("Vertical_Ship");
+        float rotationInput = Input.GetAxis("Rotation_Ship");
         Vector2 force = new Vector2(horizontalInput, verticalInput) * moveSpeed * Time.deltaTime;
         _rigidBody.velocity = force;
+        transform.Rotate(0, 0, rotationInput * turnspeed * Time.deltaTime);
+        
 
         //transform.Translate(new Vector3(horizontalInput, verticalInput, 0) * moveSpeed * Time.deltaTime);
     }
@@ -54,8 +58,23 @@ public class Ship : MonoBehaviour
 
     IEnumerator ShowToolTips()
     {
-        yield return new WaitForSeconds(5);
-        text.text = "Protect your pilot!";
+        
+        yield return new WaitForSeconds(4);
+        text.text = "WASDQE to Move Ship";
+        yield return new WaitForSeconds(4);
+        text.text = "";
+        yield return new WaitForSeconds(4);
+        text.text = "Arrow Keys to Move Pilot";
+        yield return new WaitForSeconds(4);
+        text.text = "";
+        yield return new WaitForSeconds(4);
+        text.text = "Move Pilot to Turrets to Activate";
+        yield return new WaitForSeconds(4);
+        text.text = "";
+        yield return new WaitForSeconds(4);
+        text.text = "Protect Your Pilot!";
+        yield return new WaitForSeconds(4);
+        text.text = "";
         yield break;
     }
 

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Wall : MonoBehaviour
 {
-    private float currenthealth = 100f;
-    private float maxhealth = 100f;
+    private float currenthealth = 25f;
+    private float maxhealth = 25f;
     private Rigidbody2D _rigidBody;
     private Renderer _renderer;
     public Rigidbody2D _shipRigidBody;

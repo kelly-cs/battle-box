@@ -1,28 +1,39 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
+using TMPro;
 using UnityEngine;
 
 public class Ship : MonoBehaviour
 {
     public float moveSpeed = 20f;
     private Rigidbody2D _rigidBody;
-    public GameObject[,] _shipSections = new GameObject[5,5]; // Initialize a 2D array to keep track of ship sections. initialize center component.
-    [SerializeField] private GameObject shipSectionMainPrefab; // prefab for ship section
+    //public GameObject[,] _shipSections = new GameObject[5, 5]; // Initialize a 2D array to keep track of ship sections. initialize center component.
+    public GameObject shipSectionMainPrefab; // prefab for ship section
     public GameObject pilotPrefab; // prefab for pilot
+    public TextMeshProUGUI text;
+    public float toolTipTimerMax = 5f;
+    public float timer = 0f;
 
     private void Awake()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
-        _shipSections[2, 2] = Instantiate(shipSectionMainPrefab, new Vector3(0,0,0), Quaternion.identity); // create an initial ships section
-        _shipSections[2, 2].transform.parent = transform;
+        //_shipSections[2, 2] = Instantiate(shipSectionMainPrefab, new Vector3(0, 0, 0), Quaternion.identity); // create an initial ships section
+        //_shipSections[2, 2].transform.parent = transform;
+        Instantiate(shipSectionMainPrefab, new Vector3(0, 0, 0), Quaternion.identity).transform.parent = transform; // create the shipsection and make Ship its parent.
 
-        var main_section = _shipSections[2, 2].GetComponent<ShipSection>(); // get the main section created
-        main_section._xposition = 2;
-        main_section._yposition = 2;
+        //var main_section = _shipSections[2, 2].GetComponent<ShipSection>(); // get the main section created
+        //main_section._xposition = 2;
+        //main_section._yposition = 2;
 
         var pilot = Instantiate(pilotPrefab, new Vector3(0, 0, 0), Quaternion.identity);
         pilot.transform.parent = transform;
+        StartCoroutine(ShowToolTips());
+
     }
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +49,14 @@ public class Ship : MonoBehaviour
         _rigidBody.velocity = force;
 
         //transform.Translate(new Vector3(horizontalInput, verticalInput, 0) * moveSpeed * Time.deltaTime);
+    }
+
+
+    IEnumerator ShowToolTips()
+    {
+        yield return new WaitForSeconds(5);
+        text.text = "Protect your pilot!";
+        yield break;
     }
 
 }

@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class NewShipSection : MonoBehaviour
 {
-    public TextMeshProUGUI text;
 
     // Start is called before the first frame update
     void Start()
@@ -23,11 +22,9 @@ public class NewShipSection : MonoBehaviour
     {
 
         Debug.Log(collision.gameObject.tag);
-        text.text = collision.gameObject.tag;
         if (collision.transform.tag == "ShipHitBox")
         {
      
-            text.text = "Collided2";
             //create a new shipsection, attach to nearest module
         }
     }

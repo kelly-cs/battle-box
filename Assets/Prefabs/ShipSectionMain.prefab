@@ -112,9 +112,6 @@ MonoBehaviour:
   - {fileID: 7706153016670607606}
   wallPrefab: {fileID: 4804953886737548565, guid: 71e0e52a46b025945a9218c589253ebf,
     type: 3}
-  _xposition: 2
-  _yposition: 2
-  health: 0
 --- !u!61 &8164218222238914769
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -122,7 +119,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3718775299310429976}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0

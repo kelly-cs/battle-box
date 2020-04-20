@@ -160,6 +160,7 @@ MonoBehaviour:
   text: {fileID: 1310792282}
   toolTipTimerMax: 5
   timer: 0
+  turnspeed: 50
 --- !u!4 &302161583
 Transform:
   m_ObjectHideFlags: 0
@@ -631,6 +632,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8900663793963638064, guid: 41b1bd0b8eebc184e900758fe83048d0,
+        type: 3}
+      propertyPath: _force
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8900663793963638064, guid: 41b1bd0b8eebc184e900758fe83048d0,
+        type: 3}
+      propertyPath: _moveSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8900663793963638066, guid: 41b1bd0b8eebc184e900758fe83048d0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -699,7 +710,27 @@ PrefabInstance:
     - target: {fileID: 8900663793963638070, guid: 41b1bd0b8eebc184e900758fe83048d0,
         type: 3}
       propertyPath: m_CollisionDetection
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8900663793963638070, guid: 41b1bd0b8eebc184e900758fe83048d0,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8900663793963638070, guid: 41b1bd0b8eebc184e900758fe83048d0,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8900663793963638070, guid: 41b1bd0b8eebc184e900758fe83048d0,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 1b271c6f7ba9fbf49b3d857c9b6bb28a, type: 2}
+    - target: {fileID: 8900663793963638070, guid: 41b1bd0b8eebc184e900758fe83048d0,
+        type: 3}
+      propertyPath: m_GravityScale
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8900663793963638071, guid: 41b1bd0b8eebc184e900758fe83048d0,
         type: 3}
@@ -716,5 +747,10 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 0.7
       objectReference: {fileID: 0}
+    - target: {fileID: 8900663793963638071, guid: 41b1bd0b8eebc184e900758fe83048d0,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 1b271c6f7ba9fbf49b3d857c9b6bb28a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41b1bd0b8eebc184e900758fe83048d0, type: 3}

@@ -44,6 +44,44 @@ public class Pilot : MonoBehaviour
         _rigidBody.velocity = force + _shipRigidBody.velocity; // drag pilot around with ship
 
         //transform.Translate(new Vector3(horizontalInput, verticalInput, 0) * moveSpeed * Time.deltaTime);
+        transform.position = ClampPosition(transform.position);
+        //transform.Translate(new Vector3(horizontalInput, verticalInput, 0) * moveSpeed * Time.deltaTime);
+    }
+
+    private Vector3 ClampPosition(Vector3 position)
+    {
+        float halfWidth = Camera.main.orthographicSize * Camera.main.aspect;
+        float halfHeight = Camera.main.orthographicSize;
+        float halfPilotSize = 0.125f; // this is half of the size of the ship, in unity units. if the ship is resized this will die
+        Vector3 result = new Vector3();
+
+        if (position.x - halfPilotSize < -halfWidth)
+        {
+            result.x = -halfWidth + halfPilotSize;
+        }
+        else if (position.x + halfPilotSize > halfWidth)
+        {
+            result.x = halfWidth - halfPilotSize;
+        }
+        else
+        {
+            result.x = position.x;
+        }
+
+        if (position.y - halfPilotSize < -halfHeight)
+        {
+            result.y = -halfHeight + halfPilotSize;
+        }
+        else if (position.y + halfPilotSize > halfHeight)
+        {
+            result.y = halfHeight - halfPilotSize;
+        }
+        else
+        {
+            result.y = position.y;
+        }
+
+        return result;
     }
 
     /* not working reliably at this time, will fix later (kill pilot if they leave ship)

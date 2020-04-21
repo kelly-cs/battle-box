@@ -97,8 +97,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 0
-  _force: 5
-  _moveSpeed: 5
+  _force: 10
+  _moveSpeed: 10
 --- !u!61 &8900663793963638071
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -124,7 +124,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 0.05
 --- !u!50 &8900663793963638070
 Rigidbody2D:
   serializedVersion: 4

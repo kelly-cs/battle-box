@@ -71,23 +71,19 @@ public class uimanager : MonoBehaviour
     IEnumerator ShowToolTips()
     {
 
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(2);
         text.text = "WASDQE to Move Ship";
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(3);
         text.text = "";
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(3);
         text.text = "Arrow Keys to Move Pilot";
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(3);
         text.text = "";
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(3);
         text.text = "Move Pilot to Turrets to Activate";
-        yield return new WaitForSeconds(4);
-        text.text = "";
-        yield return new WaitForSeconds(4);
-        text.text = "Walls Heal While Pilot is in Ship";
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(3);
         text.text = "Keep Your Pilot Alive!";
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(3);
         text.text = "";
         yield break;
     }

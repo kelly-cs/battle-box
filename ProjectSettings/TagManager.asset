@@ -8,6 +8,9 @@ TagManager:
   - Text
   - ShipHitBox
   - Enemy1
+  - Pilot
+  - Turret
+  - FriendlyBullet
   layers:
   - Default
   - TransparentFX
@@ -17,12 +20,12 @@ TagManager:
   - UI
   - 
   - 
-  - Ship walls
+  - Ship Walls
   - Pilot
+  - Turret
   - Ship
-  - 
-  - 
-  - 
+  - FriendlyBullet
+  - Enemy
   - 
   - 
   - 

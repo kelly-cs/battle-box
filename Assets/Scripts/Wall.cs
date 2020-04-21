@@ -6,6 +6,7 @@ public class Wall : MonoBehaviour
 {
     private float currenthealth = 25f;
     private float maxhealth = 25f;
+    private float regenRate = 0.25f;
     private Rigidbody2D _rigidBody;
     private Renderer _renderer;
     public Rigidbody2D _shipRigidBody;
@@ -34,8 +35,16 @@ public class Wall : MonoBehaviour
             _renderer.material.color = RenderHealthColor(currenthealth);
             // _renderer.material.SetColor("_Color", RenderHealthColor(currenthealth)); // set color of the wall to the generated color
         }
+
     }
 
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "Pilot")
+        {
+            currenthealth += regenRate;
+        }
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.transform.tag == "Enemy1")

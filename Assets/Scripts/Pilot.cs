@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Pilot : MonoBehaviour 
 {
@@ -31,6 +32,12 @@ public class Pilot : MonoBehaviour
     // do rigidbody stuff
     private void LateUpdate()
     {
+
+    }
+
+
+    private void FixedUpdate()
+    {
         float horizontalInput = Input.GetAxis("Horizontal_Pilot");
         float verticalInput = Input.GetAxis("Vertical_Pilot");
         Vector2 force = new Vector2(horizontalInput, verticalInput) * moveSpeed * Time.deltaTime;
@@ -39,16 +46,29 @@ public class Pilot : MonoBehaviour
         //transform.Translate(new Vector3(horizontalInput, verticalInput, 0) * moveSpeed * Time.deltaTime);
     }
 
+    /* not working reliably at this time, will fix later (kill pilot if they leave ship)
     private void OnCollisionExit2D(Collision2D collision)
     {
+        if(collision.transform.tag == "ShipHitBox")
+        {
+            // tell the game manager
+            Destroy(this.gameObject);
+        }
         
     }
+    */
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        /*
         if(collision.transform.tag != "Ship" || collision.transform.tag != "ShipHitBox")
         {
-
+            //gameover, pilot has been hit by something
+        }
+        */
+        if(collision.transform.tag == "Enemy1")
+        {
+            SceneManager.LoadScene(1); 
         }
     }
 

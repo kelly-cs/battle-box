@@ -7,7 +7,7 @@ public class Enemy1 : MonoBehaviour
     public Colors color;
     private Color _unityColor;
     public float _force = 2f;
-    public float _moveSpeed = 1f;
+    public float _moveSpeed = 2f;
     private Rigidbody2D _rigidBody;
     private float health = 2f;
     private GameObject _pilot;
@@ -44,7 +44,7 @@ public class Enemy1 : MonoBehaviour
         if(health <= 0)
         {
             // add animation later?
-            GameManager.enemyDestroyed?.Invoke();
+            uimanager.enemyDestroyed?.Invoke();
             Destroy(this.gameObject);
         }
 

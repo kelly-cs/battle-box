@@ -11,6 +11,8 @@ TagManager:
   - Pilot
   - Turret
   - FriendlyBullet
+  - gameover2
+  - gameover1
   layers:
   - Default
   - TransparentFX
@@ -26,7 +28,7 @@ TagManager:
   - Ship
   - FriendlyBullet
   - Enemy
-  - 
+  - OutOfBoundsCollision
   - 
   - 
   - 

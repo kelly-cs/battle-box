@@ -48,7 +48,7 @@ public class redturret : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collider)
     {
-        Debug.Log(collider.transform.tag.ToString());
+        //Debug.Log(collider.transform.tag.ToString());
         if (collider.transform.tag == "Pilot")
         {
             if(timer > _fireRate)
@@ -62,7 +62,7 @@ public class redturret : MonoBehaviour
 
     private void Shoot()
     {
-        Debug.Log("Shooting!");
+        //Debug.Log("Shooting!");
         var bullet = Instantiate(_bulletPrefab, transform.position, transform.rotation);
         // update the bullet's stats
         var bulletInfo = bullet.GetComponent<FriendlyBullet>();

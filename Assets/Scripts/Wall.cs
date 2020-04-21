@@ -1,15 +1,19 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Wall : MonoBehaviour
 {
-    private float currenthealth = 25f;
+    public float currenthealth = 25f;
     private float maxhealth = 25f;
-    private float regenRate = 0.25f;
+    private float regenRate = 2f;
+    private float regenAmt = 1f;
     private Rigidbody2D _rigidBody;
     private Renderer _renderer;
     public Rigidbody2D _shipRigidBody;
+    private bool isRegenerating;
+    private float regenDelayAfterBreaking = 3000f;
     private void Awake()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
@@ -32,19 +36,41 @@ public class Wall : MonoBehaviour
         }
         else
         {
+            GetComponent<BoxCollider2D>().enabled = true;
             _renderer.material.color = RenderHealthColor(currenthealth);
             // _renderer.material.SetColor("_Color", RenderHealthColor(currenthealth)); // set color of the wall to the generated color
         }
 
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    /* broken
+    private void delayRegen()
     {
-        if (collision.transform.tag == "Pilot")
+        float timer = 0f;
+        regen(false);
+        while (timer < regenDelayAfterBreaking)
         {
-            currenthealth += regenRate;
+            timer += Time.deltaTime;
         }
+        regen(true);
     }
+
+    public void regen(bool bl)
+    {
+        Debug.Log("regen2");
+        if (bl)
+        {
+            isRegenerating = true;
+            StartCoroutine(regen());
+        }
+        else
+        {
+            isRegenerating = false;
+            StopCoroutine(regen());
+        }
+
+    }
+    */
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.transform.tag == "Enemy1")
@@ -66,5 +92,12 @@ public class Wall : MonoBehaviour
         //Debug.Log("GREEN: " + greenvalue.ToString() + "RED: " + redvalue.ToString());
         return new Color(redvalue, greenvalue, 0f, 1f);
 
+    }
+
+    IEnumerator regen()
+    {
+        Debug.Log("adding health");
+        currenthealth += regenAmt;
+        yield return new WaitForSeconds(regenRate);
     }
 }

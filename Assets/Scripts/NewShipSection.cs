@@ -21,8 +21,8 @@ public class NewShipSection : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
 
-        Debug.Log(collision.gameObject.tag);
-        if (collision.transform.tag == "ShipHitBox")
+        //Debug.Log(collision.gameObject.tag);
+        if (collision.transform.tag == "ShipHitBox" || collision.transform.tag == "Ship")
         {
      
             //create a new shipsection, attach to nearest module
